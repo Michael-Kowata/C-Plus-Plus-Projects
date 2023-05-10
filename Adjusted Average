@@ -1,0 +1,99 @@
+// S112 Kowata Adjusted Average.cpp 
+// Author: Michael Kowata
+// Goal: Calculates the adjusted average of grades stored in a vector.
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <iomanip>
+using namespace std;
+
+//Prototypes-----------------------------------------------------------------
+void populateVector(vector<double>& v, string fileName);
+double findMaxValue(vector<double> v);
+double findMinValue(vector<double> v);
+double calculateAdjustedAverage(vector<double> v, double maxVal, double minVal);
+
+int main()
+{
+    //Data Declaration
+    vector<double> vgrades;
+
+	populateVector(vgrades, "c:/users/mkowata/temp/Grades.txt");
+
+    double Max;
+    Max = findMaxValue(vgrades);
+
+    double Min;
+    Min = findMinValue(vgrades);
+    
+    cout << fixed << setprecision(2);
+    cout << "Adjusted Average: " << calculateAdjustedAverage(vgrades, Max, Min) << "\n";
+    cout << "Max Value: " << Max << "\n";
+    cout << "Min Value: " << Min << "\n";
+}
+
+//User-defined methods
+void populateVector(vector<double>& v, string fileName)
+{
+    ifstream infile(fileName);
+    if (!infile)
+    {
+        cout << "Error - File not found";
+        exit(1);
+    }
+    double num;
+    while (infile.good())
+    {
+        infile >> num;
+        v.push_back(num);
+    }
+    infile.close();
+}
+
+double findMaxValue(vector<double> v)
+{   double max = 0;
+    for (int i = 0; i < v.size(); i++)
+    {
+        if (v[i] > max)
+        {
+            max = v[i];
+        }
+    }
+    return max;
+}
+
+double findMinValue(vector<double> v)
+{
+    double min = 100;
+    for (int i = 0; i < v.size(); i++)
+    {
+        if (v[i] < min)
+        {
+            min = v[i];
+        }
+    }
+    return min;
+}
+
+double calculateAdjustedAverage(vector<double> v, double maxVal, double minVal)
+{
+    double v1;
+    v1 = maxVal + minVal;
+
+    double partialSum=0;
+    for (int i = 0; i < v.size(); i++)
+    {
+        partialSum = partialSum+v[i];
+    }
+
+    double n=0;
+    for (int i = 0; i < v.size(); i++)
+    {
+        n++;
+    }
+
+    double adjustedAverage=0;
+    adjustedAverage = (partialSum-v1) / (n - 2);
+    return adjustedAverage;
+}
