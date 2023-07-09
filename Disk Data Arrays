@@ -1,0 +1,92 @@
+// S112 Kowata Disk Data Arrays.cpp 
+// Author: Michael Kowata
+// Goal: Transfer disk data to memory array.
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+//global constant
+const int MAXCELLS = 10;
+
+//Prototypes
+void transferDisk2Array(string fileName, int a[], int& asize);
+void transferDisk2Vector(string fileName, vector<int>& v);
+void printArray(int a[], int asize);
+void printVector(vector<int>& a);
+
+int main()
+{
+	int a[MAXCELLS]{};
+	int asize = 0;
+
+	//transferDisk2Array("c:users/mkowata/temp/mydataset1.txt", 0, asize);
+	//printArray(a, asize);
+
+	vector<int> v;
+	transferDisk2Vector("c:users/mkowata/temp/mydataset2.txt", v);
+	printVector(v);
+}
+
+//User-defined Functions -----------------------------------------------
+
+void printArray(int a[], int asize)
+{
+	cout << "\n Array: ";
+	for (int i=0; i < asize; i++)
+	{
+		cout << a[i] << ", ";
+	}
+	cout << endl;
+}
+
+void printVector(vector<int>& a)
+{
+	cout << "\n Vector: ";
+	for (int i = 0; i < a.size(); i++)
+	{
+		cout << a[i] << ", ";
+	}
+	cout << endl;
+}
+
+void transferDisk2Array(string fileName, int a[], int& asize)
+{
+	ifstream infile(fileName);
+	if (!infile)
+	{
+		cout << "ERROR - file not found." << endl;
+		exit(1);
+	}
+
+	int pos = 0;
+	int dest;
+	while (infile >> dest)
+	{
+		if (pos == MAXCELLS)
+		{
+			cout << "ERROR - No memory available\n";
+			exit(2);
+		}
+		a[pos] = dest;
+		pos++;
+	}
+	asize = pos;
+}
+
+//-----------------------------------------------------------------
+void transferDisk2Vector(string fileName, vector<int>& v)
+{
+	ifstream infile(fileName);
+	if (!infile)
+	{
+		cout << "ERROR - file not found." << endl;
+		exit(1);
+	}
+	int dest;
+	while (infile >> dest)
+	{
+		v.push_back(dest);
+	}
+}
