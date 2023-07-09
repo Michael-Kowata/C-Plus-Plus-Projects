@@ -1,0 +1,136 @@
+// S112 Kowata Comparing Two Arrays.cpp 
+// Author: Michael Kowata
+//Goal: Compare the content of 2 arrays and see if they are equivalent.  
+
+#include <iostream>
+using namespace std;
+
+//Prototypes
+ 
+bool areEquivalent(int a[], int sizeA, int b[], int sizeB);
+
+int countOccurrences(int data[], int sizeData, int item);
+
+void showArray(int a[], int sizeA, string msg = "");
+
+void getArray(int data[], int& n, string arrayName);
+
+
+int main()
+{
+	const int MAX_ARRAY_CAPACITY = 100;
+
+	//First Array
+	int sizeA;
+	cout << ("How many items will there be in array A [at most 100]: ");
+	cin >> sizeA;
+	while (sizeA > MAX_ARRAY_CAPACITY)
+	{
+		cout << ("ERROR - too many cells - try again\n");
+		cout << ("How many items will there be in array A [at most 100]: ");
+		cin >> sizeA;
+	}
+
+	int a[100] = { 0 };
+
+	cout << ("Enter items [use space to separate]: ");
+
+	getArray(a, sizeA, "Array A");
+
+	//Second Array
+	int sizeB;
+	cout << ("\nHow many items will there be in array B [at most 100]: ");
+	cin >> sizeB;
+	while (sizeB > MAX_ARRAY_CAPACITY)
+	{
+		cout << ("ERROR - too many cells - try again\n");
+		cout << ("How many items will there be in array B [at most 100]: ");
+		cin >> sizeB;
+	}
+
+	int b[100] = { 0 };
+
+	cout << ("Enter items [use space to separate]: ");
+
+	getArray(b, sizeB, "Array B");
+
+	cout << ("\n");
+
+	showArray(a, sizeA, "Array A");
+
+	cout << ("\n\n");
+
+	showArray(b, sizeB, "Array B");
+
+	for (int i = 0; i < sizeA; i++)
+	{
+		if (countOccurrences(a, sizeA, a[i])!=countOccurrences(b, sizeB, a[i]))
+		{
+			cout << "\n\n different occurrences";
+			exit(0);
+		}
+
+	}
+
+	areEquivalent(a, sizeA, b, sizeB);
+
+	cout << ("\n\n");
+
+	if (sizeA == sizeB)
+	{
+		cout << "The arrays are: Equivalent";
+		cout << ("\n");
+	}
+	else
+	{
+		cout << "The arrays are: Not Equivalent";
+		cout << ("\n");
+	}
+}
+
+//User-Defined Functions
+
+bool areEquivalent(int a[], int sizeA, int b[], int sizeB)
+{
+	if (sizeA == sizeB)
+	{
+		return true;
+		bool areEquivalent = true;
+	}
+
+	else
+	{
+		return false;
+		bool areEquivalent = false;
+	}
+}
+
+int countOccurrences(int data[], int sizeData, int item)
+{
+	int counter = 0;
+	for (int i = 0; i < sizeData; i++)
+	{
+		if (data[i] == item)
+		{
+			counter++;
+		}
+	}
+	return counter;
+}
+
+void showArray(int a[], int sizeA, string msg)
+{
+	cout << msg << endl;
+	for (int i = 0; i < sizeA; i++)
+	{
+		cout << a[i] << " ";
+	}
+}
+
+void getArray(int data[], int& n, string arrayName)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cin >> data[i];
+	}
+}
