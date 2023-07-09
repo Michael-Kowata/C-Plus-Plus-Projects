@@ -1,0 +1,37 @@
+// S112 Kowata Cookie Ingredients.cpp 
+// Author: Michael Kowata
+// Goal: Find the amount of ingredients to make the requested amount of cookies
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+//Global comments 
+const double sugar_batch = 1.5;
+const double flour_batch = 2.75;
+const double butter_batch = 1;
+const int batch_size = 48;
+
+int main()
+{
+    //Variable declarations
+    double sugar, butter, flour, ratio, wantedCookies;
+
+    //input
+    cout << "Enter how many cookies do you want to make? ";
+    cin >> wantedCookies;
+
+    //process
+    ratio = wantedCookies / batch_size;
+    sugar = ratio * sugar_batch;
+    flour = ratio * flour_batch;
+    butter = ratio * butter_batch;
+
+    //output
+    cout << fixed << setprecision(2) << showpoint;
+    cout << "You need the following ingredients\n"
+        << "\t sugar        " << sugar << " cup(s)\n"
+        << "\t butter       " << butter << " cup(s)\n"
+        << "\t flour        " << flour << " cup(s)\n";
+
+}
