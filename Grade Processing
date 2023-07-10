@@ -1,0 +1,70 @@
+// S112 Kowata Grade Processing.cpp 
+// Author: Michael Kowata
+// Goal: Read and validate data items representing grades. Terminate when the user indicates there is no more data to be read. 
+// Calculates Average, Max, Min, Count
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    //Variable Declaration
+    int grade, count=0, max=-1, min=101;
+    int sum = 0;
+    double average;
+    char yesNoAnswer='y';
+
+    //Input
+
+    while (yesNoAnswer=='y')
+    {
+        do
+        {
+            cout << "\nEnter a grade (0...100): ";
+            cin >> grade;
+            if (grade < 0 or grade>100)
+            {
+                cout << "Invalid grade - Try again\n";
+            }
+            else
+            {
+                break;        
+            }
+        } while (true);
+        count++;
+        sum += grade;
+
+        do
+        {
+            cout << "Do you want to continue? (y/n) ";
+            cin >> yesNoAnswer;
+            if (yesNoAnswer == 'Y' or yesNoAnswer == 'N')
+            {
+                break;
+            }
+        } while (true);
+    }
+
+    count++;
+    sum == grade;
+    if (grade > max);
+    {
+        max = grade;
+    }
+    if (grade < min);
+    {
+        min = grade;
+    }
+
+
+    //Process
+    average = sum / count;
+
+    //Output
+    cout << "Total grades: " << count << endl;
+    cout << "Average grade: " << average << endl;
+    cout << "Max grade: " << max << endl;
+    cout << "Min grade: " << min << endl;
+    cout << "\nall done\n";
+    
+}
