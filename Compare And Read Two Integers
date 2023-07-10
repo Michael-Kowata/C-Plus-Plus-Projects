@@ -1,0 +1,55 @@
+// S112 Kowata Read and Compare 2 Integers.cpp 
+// Author: Michael Kowata
+// Goal: Compare and read 2 integers. 
+
+//Preprocessor Declarations
+#include <iostream>
+
+using namespace std;
+
+//Main Function
+int main()
+{
+	//Variables
+	int a, b;
+
+	//Input
+	cout << "Enter a positive EVEN integer: ";
+	cin >> a;
+
+	while (a % 2 != 0 or a < -1)
+	{
+		cout << "\nError - Expecting a POSITIVE EVEN number - Please, try again." << endl;
+		cout << "Enter a positive EVEN integer: ";
+		cin >> a;
+		
+	} 
+
+	cout << "----------------------------------\n";
+
+	cout << "Enter a positive ODD integer:  ";
+	cin >> b;
+
+	while (b % 2 != 1 or b < -1)
+	{
+		cout << "\nError - Expecting a POSITIVE ODD number - Please, try again." << endl;
+		cout << "Enter a positive ODD integer:  ";
+		cin >> b;
+	} 
+
+	cout << "----------------------------------\n";
+
+	//Process
+
+	if (a >= b)
+	{
+		cout << "The first number " << "(" << a << ")" << " is larger or equal than the second " << "(" << b << ")";
+	}
+
+	else
+	{
+		cout << "The second number " << "(" << b << ")" << " is larger or equal than the first " << "(" << a << ")";
+	}
+
+	//Output
+}
