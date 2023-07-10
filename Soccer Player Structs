@@ -1,0 +1,107 @@
+// S112 Kowata Soccer Player Structs.cpp 
+// Author: Michael Kowata
+// Goal: Record and display the data of soccer players 
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+//Structures---------------------------------------------------------
+struct Player {
+    //Data members
+    string name;
+    string team;
+    int goals;
+    int assists;
+    int minutes;
+    double PI;
+};
+//Prototypes---------------------------------------------------------
+void makeDatabase(string fileName, vector<Player>& vdb);
+void showPlayer(Player p);
+void showDatabase(vector<Player> playerDatabase);
+Player findMostEffectivePlayer(vector<Player> playerDatabase);
+
+int main()
+{
+    vector <Player> playerDatabase;
+
+    makeDatabase("c:/users/mkowata/temp/xplayer.txt", playerDatabase);
+
+    showDatabase(playerDatabase);
+
+    cout << "\nMost Effective Player\n";
+    showPlayer(findMostEffectivePlayer(playerDatabase));
+}
+
+//User-defined Functions---------------------------------------------
+void makeDatabase(string fileName, vector<Player>& vdb)
+{
+    vector <Player> playerDatabase;
+
+    string strName, strTeam;
+    int goals, assists, minutes;
+
+    ifstream infile(fileName);
+
+    if (!infile)
+    {
+        cout << "Error - file not found \n";
+        exit(101);
+    }
+
+    while (infile)
+    {
+        getline(infile, strName);
+        getline(infile, strTeam);
+        infile >> goals;
+        infile >> assists;
+        infile >> minutes;
+        infile.ignore();
+        double PI = 1000 * ((double)goals + (double)assists / 2) / (double)minutes;
+        Player c{ strName, strTeam, goals, assists, minutes, PI};
+        vdb.push_back(c);
+    }
+    infile.close();
+}
+
+void showPlayer(Player p)
+{
+    cout << left << setprecision(4);
+    cout << setw(22) << p.name;
+    cout << setw(20) << p.team;
+    cout << setw(8) << p.goals;
+    cout << setw(10) << p.assists;
+    cout << setw(10) << p.minutes;
+    cout << setw(15) << p.PI << endl;
+}
+
+void showDatabase(vector<Player> playerDatabase)
+{
+    cout << "Player Name" << setw(15) << "Team" << setw(21) << "Goals" << setw(10) << "Assists" << setw(10) << "Minutes" << setw(13)
+        << "Perf.Index" << endl;
+    cout << "---------------------------------------------------------------------------------" << endl;
+    for (int i = 0; i < playerDatabase.size(); i++)
+    {
+        showPlayer(playerDatabase[i]);
+    }
+}
+
+Player findMostEffectivePlayer(vector<Player> playerDatabase)
+{
+    double a = 0;
+    for (int i = 0; i < playerDatabase.size(); i++)
+    {
+        if (playerDatabase[i].PI > a)
+            a = playerDatabase[i].PI;
+    }
+
+    for (int j = 0; j < playerDatabase.size(); j++)
+    {
+        if (playerDatabase[j].PI == a)
+            return playerDatabase[j];
+    }
+}
