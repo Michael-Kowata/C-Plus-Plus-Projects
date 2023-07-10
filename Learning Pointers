@@ -1,0 +1,118 @@
+// S112 Kowata Learning Pointers.cpp 
+//
+
+#include <iostream>
+using namespace std;
+
+//Prototypes
+void experiment01();
+void experiment02();
+void experiment03();
+
+void myReverseStr(string ps); //reverses the content of a string referenced by ps
+
+void myReverseStr(string ps); //reverses the content of a string referenced by ps
+
+int main()
+{
+	experiment03();
+
+}
+//-----------------------------------------------------------------------------------------------------
+void experiment02()
+{
+	const int ASIZE = 5;
+	int a[ASIZE]{ 11, 22, 33, 44, 55 };
+
+	cout << "a is       " << a << endl;
+
+	int* p = a;
+	cout << "p is       " << p << endl;
+
+	for (int i = 0; i < ASIZE; i++)
+	{
+		cout << "Cell-" << i << " holds: " << a[i] << endl;
+		cout << "Cell-" << i << " holds: " << *(a+i) << endl;
+	}
+
+	for (int i = 0; i < ASIZE; i++)
+	{
+		cout << "Using Ptr-Arithmetic Cell-" << i << " holds: " << *p << endl;
+		p++;
+	}
+
+} 
+
+
+void experiment01()
+{
+	int n = 5;
+	cout << "The value of n is:   " << n << endl;
+	cout << "The address of n is: " << &n << endl;
+
+	int* p = nullptr;
+	cout << "Pointer p:           " << p << endl;
+
+	p = &n;
+	cout << "Pointer p:           " << p << endl;
+
+	int spy = *p;
+	cout << "Spy holds:           " << spy << endl;
+
+	*p = 7;
+	cout << "The value of n:      " << n << endl;
+
+	cout << "Address of p:        " << &p << endl;
+	cout << "Value of p:          " << p << endl;
+	cout << "p references:        " << *p << endl;
+
+	//cout << "p references:        " << *p << endl; //Throws an exception
+}
+
+void experiment03()
+{
+	//string s = "Hello";
+	//cout << "s = " << s << "\tAddress: " << &s << endl;
+
+	////char* p = (char*) & s;
+	//char* p = &s[0];
+
+	//for (int i = 0; i < s.length(); i++)
+	//{
+	//	cout << "Address: " << (unsigned int) p << " Char: " << *p << "\t" << (unsigned int) *p << endl;
+	//	p++;
+	//}
+
+	string s2 = "Hasta la vista";
+	//myReverseStr(s2);
+
+	myReverseStr(&s2); //TO DO <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+	cout << "Main " << s2 << endl;
+
+
+}
+
+void myReverseStr(string s)
+{
+	cout << "Inside the function " << s << endl;
+	char* pfirst = (char*)(&s[0]);
+	char* plast = (char*)(&s[s.length() - 1]);
+
+	//cout << pfirst << "\t" << *pfirst << endl;
+	//cout << plast << "\t" << *plast << endl;
+
+	char temp;
+	for (int i = 0; i < s.length()/2; i++)
+	{
+		//exchange characters
+		temp = *plast;
+		*plast = *pfirst;
+		*pfirst = temp;
+
+		//Move pointers
+		pfirst++;
+		plast--;
+	}
+	cout << "Inside the function - after reversing: " << s << endl;
+}
