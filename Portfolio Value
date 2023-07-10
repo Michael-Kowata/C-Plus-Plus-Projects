@@ -1,0 +1,60 @@
+// S112 Kowata Portfolio Value.cpp 
+// Author: Michael Kowata
+// Goal: Estimate portfolio values by evaluating the top three investments of a client 
+//-------------------------------------------------------------------------------------
+
+//Preprocessor Declarations
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+//main function
+int main()
+{
+   //Variable declaration
+	string name1, name2, name3;
+	int numShares1, numShares2, numShares3;
+	double sharePrice1, sharePrice2, sharePrice3;
+	double totalPortfolioValue;
+
+   //Input
+	// Collect information about first company
+	cout << "Enter Company name: ";
+	getline(cin, name1);
+	cout << "How many shares:    ";
+	cin >> numShares1;
+	cout << "cost of each share: ";
+	cin >> sharePrice1; 
+	cin.ignore();
+
+	// Collect information about second company
+	cout << "Enter Company name: ";
+	getline(cin, name2);
+	cout << "How many shares:    ";
+	cin >> numShares2;
+	cout << "cost of each share: ";
+	cin >> sharePrice2;
+	cin.ignore();
+
+	// Collect information about third company
+	cout << "Enter Company name: ";
+	getline(cin, name3);
+	cout << "How many shares:    ";
+	cin >> numShares3;
+	cout << "cost of each share: ";
+	cin >> sharePrice3;
+	cin.ignore();
+
+
+   //Process
+	totalPortfolioValue = (numShares1 * sharePrice1) +
+		(numShares2 * sharePrice2) +
+		(numShares3 * sharePrice3);
+   
+   //Output
+	cout << "Total value of your investment on: " << name1 << ", "
+		<< name2 << ", "
+		<< name3 << " is " 
+		<< totalPortfolioValue << endl;
+}
