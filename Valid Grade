@@ -1,0 +1,71 @@
+// S112 Kowata Valid Grade.cpp
+// Author: Michael Kowata
+// Purpose: Check the validity of a student's entered grade
+
+//Preprocessor Declarations
+#include <iostream>
+using namespace std;
+
+//Global constants
+const int minGrade = 0;
+const int maxGrade = 100;
+
+
+
+//int main()
+//{
+//    //Variables
+//    int grade;
+//
+//    //Input
+//    cout << "Enter a grade (0-100): ";
+//    cin >> grade;
+//
+//    //Process
+//    while (grade < 0 or grade>100)
+//    {
+//    cout << "\nThat is not a valid grade, please try again\n";
+//    cout << "Enter a grade (0-100): ";
+//    cin >> grade;
+//    }
+//    //Output 
+//    cout << "Final grade is: " << grade; 
+//}
+//
+
+int main()
+{
+	//Variable Declarations
+	int grade;
+
+	//Input
+	//do {
+	//	cout << "Enter a grade (0...100) ";
+	//	cin >> grade;
+	//	if (grade < minGrade or grade>maxGrade);
+	//	{
+	//	cout << "Invalid data";
+	//	cout << "...try again\n";
+	//	}
+
+	//} while (grade < minGrade or grade >maxGrade);
+
+	do
+	{
+		cout << "Enter a grade (0...100) ";
+		cin >> grade;
+		if (grade >= minGrade and grade <= maxGrade)
+		{
+			break;
+		}
+		else
+		{
+			cout << "Invalid data - try again\n";
+		}
+	} while (true);
+
+	//Process
+
+	//Output 
+	cout << "\nwell done\n";
+}
