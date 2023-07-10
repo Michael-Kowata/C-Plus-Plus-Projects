@@ -1,0 +1,55 @@
+// S112 Kowata Monthly Orders App.cpp
+// Author: Michael Kowata
+// Goal: Read a disk file containing customers orders and stating the total balance. 
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <fstream>
+using namespace std;
+//Preprocessor Declarations
+
+int main()
+{
+    //Variable Declaration
+    int customerNum, itemQuantity;
+    string customerName, itemId;
+    double unitPrice, total;
+
+    //Input 
+    ifstream myinfile;
+    myinfile.open("c:/users/mkowata/temp/orders.txt");
+    if (!myinfile)
+    {
+        cout << "ERROR - file not found\n";
+        exit(1);
+    }
+    if (myinfile.is_open());
+    {
+        while (myinfile.good())
+        {
+        myinfile >> customerNum;
+        myinfile.get();
+        getline(myinfile,customerName);
+        myinfile >> itemId; 
+        myinfile >> itemQuantity;
+        myinfile >> unitPrice;
+        total = unitPrice * itemQuantity;
+
+        cout << "CustId: " << customerNum << ", Name: " << customerName << endl;
+        cout << itemId << "(" << itemQuantity << ") " << "Price: $" << unitPrice << fixed << showpoint << setprecision(2) << endl;
+
+        while (myinfile >> itemId and itemId != "#")
+        {
+            myinfile >> itemQuantity;
+            myinfile >> unitPrice;
+            cout << itemId << "(" << itemQuantity << ") " << "Price: $" << unitPrice << endl;
+            total = total+unitPrice * itemQuantity;
+        }
+
+        cout << "balance: $" << total << endl;
+        cout << "\n";
+        }
+    }
+    myinfile.close();
+}
