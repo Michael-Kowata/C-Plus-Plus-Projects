@@ -1,0 +1,40 @@
+// S112 Kowata Integer Tip Calculator.cpp 
+// Author: Michael Kowata
+// Goal: Calculate the total cost of a meal with 10%, 15%, or 20% tip
+
+//Preprocessor Declarations
+#include <iostream>
+using namespace std;
+
+//Main Function
+int main()
+{
+    //Variable Declarations
+    double meal;
+    double tip;
+    double total;
+    double tenPercent;
+    double fifteenPercent;
+    double twentyPercent;
+
+    //Input
+    cout << "Enter the bill's total: ";
+    cin >> meal;
+    
+    //Process
+    tenPercent = round(0.10 * meal);
+    fifteenPercent = round(0.15 * meal);
+    twentyPercent = round(0.20 * meal);
+
+    cout << "10% Tip  .... $"<< tenPercent << "  Total" << " ... $" << meal+tenPercent << endl;
+    cout << "15% Tip  .... $"<< fifteenPercent << "  Total" << " ... $" << meal+fifteenPercent << endl;
+    cout << "20% Tip  .... $"<< twentyPercent << "  Total" << " ... $" << meal+twentyPercent << endl;
+
+    cout << "How much would you like to tip? ";
+    cin >> tip;    
+    total = round((0.01 * tip) * meal) + meal;
+
+    //Output
+    cout << "Your total is: $" << total << endl;
+
+}
