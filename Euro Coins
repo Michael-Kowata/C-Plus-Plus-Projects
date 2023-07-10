@@ -1,0 +1,82 @@
+// S112 Kowata Euro Coins.cpp 
+// Author: Michael Kowata
+// Goal: Convert euros (less than 1) to cents
+
+
+//Preprocessor Declarations
+#include <iostream>
+
+using namespace std;
+
+//main function
+int main()
+{
+	//Variable Declaration
+	int fiftyCents;
+	int twentyCents;
+	int tenCents;
+	int fiveCents;
+	int twoCents;
+	int oneCents;
+	int euro;
+	double change;
+
+	//Input
+	cout << "Enter the change amount (less than one euro): ";
+	cin >> euro;
+
+	//Process
+	fiftyCents = 0;
+	twentyCents = 0;
+	tenCents = 0;
+	fiveCents = 0;
+	twoCents = 0;
+	oneCents = 0;
+	change = 0;
+
+	while (euro >= 1)
+	{
+		if (euro >= 50)
+		{
+			change = round(euro / 50); fiftyCents += change; euro = euro % 50;
+		}
+
+		else if (euro >= 20)
+		{
+			change = round(euro / 20); twentyCents += change; euro = euro % 10;
+		}
+
+		else if (euro >= 10)
+		{
+			change = round(euro / 10); tenCents += change; euro = euro % 10;
+		}
+
+		else if (euro >= 5)
+		{
+			change = round(euro / 5); fiveCents += change; euro = euro % 5;
+		}
+
+		else if (euro >= 2)
+		{
+			change = round(euro / 2); twoCents += change; euro = euro % 2;
+		}
+
+		else
+		{
+			change = round(euro / 1); oneCents += change; euro = euro % 1;
+		}
+	}
+
+
+
+	//Output
+
+	cout << "50 cent coins ... " << fiftyCents << endl;
+	cout << "20 cent coins ... " << twentyCents << endl;
+	cout << "10 cent coins ... " << tenCents << endl;
+	cout << "5 cent coins  ... " << fiveCents << endl;
+	cout << "2 cent coins  ... " << twoCents << endl;
+	cout << "1 cent coins  ... " << oneCents << endl;
+
+	cout << "Change consists of " << (fiftyCents+twentyCents+tenCents+fiveCents+twoCents+oneCents) << " coins." << endl;
+}
