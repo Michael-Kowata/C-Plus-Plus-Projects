@@ -1,0 +1,67 @@
+// S112 Kowata Working With Tables.cpp 
+//
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <fstream>
+using namespace std;
+
+
+//----------------------------------------------------------------
+//Global const
+const int MAXROWS = 6;
+const int MAXCOLS = 4;
+
+
+//----------------------------------------------------------------
+//Prototypes
+void printTable(int t[][MAXCOLS], int nRows, int nCols);
+void readTable(int t[][MAXCOLS], int MAXROWS, int MAXCOLS, int& nRows, int& nCols);
+
+int main()
+{
+	int t1[MAXROWS][MAXCOLS]{};
+
+	printTable(t1, MAXROWS, MAXCOLS);
+
+	int nRows = 0; int nCols = 0;
+	readTable(t1, MAXROWS, MAXCOLS, nRows, nCols);
+	printTable(t1, nRows, nCols);
+
+	cout << "All Done\n";
+}
+
+//User-defined functions -----------------------------------------
+void printTable(int t[][MAXCOLS], int nRows, int nCols)
+{
+	for (int r = 0; r < nRows; r++)
+	{
+		for (int c = 0; c < nCols; c++)
+		{
+			cout << setw(12) << right << t[r][c];
+		}
+		cout << endl;
+	}
+}
+
+void readTable(int t[][MAXCOLS], int& nRows, int& nCols)
+{
+	ifstream infile("c:/users/mkowata/temp/StudentGradesNamesFile.txt");
+	if (!infile)
+	{
+		cout << "ERROR - file not found\n";
+		exit(1);
+
+	}
+
+	infile >> nRows >> nCols;
+	for (int r = 0; r < nRows; r++)
+	{
+		for (int c = 0; c < nCols; c++)
+		{
+			infile >> t[r][c];
+		}
+
+	}
+}
