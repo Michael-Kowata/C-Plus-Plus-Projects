@@ -1,0 +1,56 @@
+// Testing Pointers.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+using namespace std;
+
+//Prototypes -----------------------------------------------------------
+int* createRunTimeArray(int n);
+void showArray(int* a, int n, string msg = "");
+void populateArray(int* a, int n);
+
+int main()
+{
+	int n = 5;
+	int* arr1 = createRunTimeArray(n);
+	showArray(arr1, n, " After allocation and cleaning");
+	//ask user to enter data into the array's cells
+	populateArray(arr1, n);
+	showArray(arr1, n, " Original data");
+}
+
+int* createRunTimeArray(int n)
+{
+	//Dynamic allocation of storage
+	int* newArray = new int[n];
+	//clear array contents
+	for (int i = 0; i < n; i++)
+	{
+		*(newArray + i) = 0;
+	}
+	//return pointer to first array entry
+	return newArray;
+}
+
+void showArray(int* a, int n, string msg)
+{
+	cout << endl << msg << endl;
+	for (int i = 0; i < n; i++)
+	{
+		//display array cell at index i
+		cout << " " << *(a + i);
+	}
+	cout << endl;
+}
+
+
+void populateArray(int* a, int n)
+{
+	cout << endl;
+	for (int i = 0; i < n; i++)
+	{
+		//ask operator for new data to store in cell sub-i
+		cout << " Enter data element" << i << " ";
+		cin >> *(a + i);
+	}
+}
