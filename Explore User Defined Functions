@@ -1,0 +1,84 @@
+// S112 Kowata Explore User Defined Functions.cpp 
+
+
+//Preprocessor Declarations
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+//Prototypes 
+void experiment0();
+void experiment01(int num);
+void experiment02(int& num);
+void experiment03();
+string getName();
+
+
+int main()
+{
+
+    experiment03();
+
+}
+
+//User-defined functions ---------------------------------
+
+//Understanding passing by value and passing by reference 
+
+void experiment03()
+{
+    string  fullName = getName();
+    cout << "You entered: " << fullName;
+
+}
+
+//-----------------------------------------
+string getName()
+{
+    string fName;
+    do {
+        cout << "Enter a full name: ";
+        getline(cin, fName);
+        if (fName.length() == 0)
+        {
+            cout << "invalid name -- cannot be empty\n";
+        }
+        else
+        {
+            break;
+        }
+
+    } while (true);
+    return fName;
+}
+
+//-----------------------------------------
+void experiment0()
+{
+int n = 100;
+cout << "Before experiment01\n";
+cout << "n before calling: " << n << endl;
+experiment02(n);
+cout << "n after calling: " << n << endl;
+cout << "After experiment01\n";
+cout << "\nAll Done\n";
+}
+
+//num accepts data by VALUE (copy)
+void experiment01(int num)
+{
+    cout << "Inside experiment01\n";
+    cout << num << endl;
+    num++;
+    cout << num++ << endl;
+}
+
+//num accepts data by REFERENCE (address of)
+void experiment02(int& num)
+{
+    cout << "Inside experiment02\n";
+    cout << num << endl;
+    num++;
+    cout << num++ << endl;
+}
