@@ -1,0 +1,29 @@
+// S112 Kowata Temperature Conversion.cpp 
+// Author: Michael Kowata
+// Goal: Convert the temperature from farenheit to celcius
+//
+
+//Preprocessor Declarations
+#include <iostream>
+using namespace std;
+
+//Main Function
+int main()
+{
+    //Variable Declarations
+    double farenheit;
+    double celcius;
+
+    //Input
+    cout << "Enter farenheit temperature: ";
+    cin >> farenheit;
+
+    //Process
+
+    celcius = (farenheit-32) * 5/9;
+
+
+    //Output
+    cout << "Celcius temperature is: " << celcius << " degrees" << endl;
+
+}
