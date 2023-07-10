@@ -1,0 +1,107 @@
+// S112 Kowata Learning Vectors.cpp 
+//
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+
+//Prototypes --------------------------------------------------------------------
+void printIntVector(vector<int> v, string caption);
+void modifyVector(vector<int>& v, int value);
+int findLocVector(vector<int>& v, int key);
+
+void experiment01();
+void experiment02();
+
+int main()
+{
+    //vector<int> v1{ 11, 22, 33, 44, 55 };
+    //printIntVector(v1, "Before modify");
+    //modifyVector(v1, 1);
+    //printIntVector(v1, "After modify");
+
+    //int pos = findLocVector(v1, 56);
+
+    //if (pos == -1)
+    //    cout << "Value not found\n";
+    //else
+    //    cout << "First occurrence found at " << pos << endl;
+
+    //experiment01();
+    experiment02();
+}
+
+//User-defined functions --------------------------------------------------------
+
+void experiment02()
+{
+    //compute the intersection of vector v1 ad v2
+    //(common elements-no dups)
+    vector<int> v1{ 11, 22, 11, 33, 44 };
+    vector<int> v2{ 22, 44, 55, 11 };
+
+    vector<int> v3;
+    for (int i = 0; i < v1.size(); i++)
+    {
+        int key = v1[i];
+        int pos = findLocVector(v2, key);
+        int pos2 = findLocVector(v3, key);
+        if (pos>=0 && pos2==-1)
+        {
+            v3.push_back(key);
+        }
+    }
+    printIntVector(v1, "This is v1");
+    printIntVector(v2, "This is v2");
+    printIntVector(v3, "ve (common)");
+}
+
+
+
+
+void experiment01()
+{
+    vector<int> v1{ 11, 22, 33, 44, 55 };
+    printIntVector(v1, "Before modify");
+    modifyVector(v1, 1);
+    printIntVector(v1, "After modify");
+
+    int pos = findLocVector(v1, 56);
+
+    if (pos == -1)
+        cout << "Value not found\n";
+    else
+        cout << "First occurrence found at " << pos << endl;
+}
+
+
+
+
+
+void printIntVector(vector<int> v, string caption)
+{
+    cout << "\n" << caption << "\t";
+    for (int i = 0; i < v.size(); i++)
+    {
+        cout << v[i] << ", ";
+    }
+    cout << endl;
+}
+
+void modifyVector(vector<int>& v, int value)
+{
+    for (int i = 0; i < v.size(); i++)
+    {
+        v[i] += value;
+    }
+}
+
+int findLocVector(vector<int>& v, int key)
+{
+    for (int i = 0; i < v.size(); i++)
+    {
+        if (v[i] == key) return i;
+    }
+    return -1;
+}
