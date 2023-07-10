@@ -1,0 +1,42 @@
+// S112 Kowata Greatest Value.cpp 
+//Author: Michael Kowata
+//Goal: Find the greatest value between 3 numbers
+
+
+//Preprocessor Declarations
+#include <iostream>
+using namespace std;
+
+//Main Function
+int main()
+{
+    //Variable Declarations
+    double valueOne, valueTwo, valueThree;
+
+    //Input
+    cout << "Enter value 1: ";
+    cin >> valueOne;
+
+    cout << "Enter value 2: ";
+    cin >> valueTwo;
+
+    cout << "Enter value 3: ";
+    cin >> valueThree;
+
+    //Process
+
+    if (valueOne >= valueTwo and valueOne >= valueThree);
+    cout << "Value 1 is the greatest"; << endl;
+
+    else if (valueTwo >= valueOne and valueTwo >= valueThree);
+        cout << "Value 2 is the greatest";
+
+    else (valueThree >= valueOne and valueThree >= valueTwo);
+        cout << "Value 3 is the greatest";
+        
+
+
+    //Output
+    cout << "Celcius temperature is: " << celcius << " degrees" << endl;
+
+}
