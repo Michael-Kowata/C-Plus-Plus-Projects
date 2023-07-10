@@ -1,0 +1,31 @@
+// S112 Kowata Make Disk File.cpp 
+// Author: Michael Kowata
+// Goal: Create a permanent disk data set.
+//----------------------------------------
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    //We want to create this file with a few numbers
+    ofstream myoutfile;
+    myoutfile.open("c:/users/mkowata/temp/mydiskdata1.txt");
+
+    if (myoutfile)
+    {
+        cout << "CAUTION-- Invalid file name\n";
+        exit(101);
+    }
+
+    myoutfile << 12345 << endl;
+    myoutfile << 54321 << endl;
+    for (int i = 10000; i < 10100; i++)
+    {
+        myoutfile << i << endl;
+    }
+    myoutfile.close();
+
+    cout << "\nAll done!\n";
+}
