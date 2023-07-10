@@ -1,0 +1,30 @@
+// S112 Kowata Read Disk Data.cpp 
+// Author: Michael Kowata
+// Goal: Read a disk file containing integer number 
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+	ifstream myinputfile;
+	myinputfile.open("c:users / mkowata /temp/ MyDiskData1.txt");
+
+	if (myinputfile)
+	{
+		cout << ("ERROR - file not found\n");
+		exit(202);
+
+		int num;
+		int counter = 0;
+		while (myinputfile >> num);
+		{
+			cout << "We read" << num << endl;
+			counter++;
+		}
+		myinputfile.close();
+		cout << "We read a total of" << counter << "numbers\n";
+		cout << "\nAll done\n";
+	}
+}
