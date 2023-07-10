@@ -1,0 +1,35 @@
+// S112 Kowata Miles Per Gallon.cpp 
+// Author: Michael Kowata
+/* "Goal: Solve the following problem
+Miles per gallon
+Write a program that calculates a cars gas milelage. The program should ask the user to enter 
+the number of gallons of gas the car can hold and the number of miles it can be driven on a full tank.
+It should then display the number of miles that may be driven per gallon of gas.*/
+
+//Preprcessor Declarations
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+//Global constants
+//const double FULLTANK = 20; //gallons in a full tank
+
+//Main Function
+int main()
+{
+    //Variable Definition
+    double gallons, distance, mpg;
+
+    //Input
+    cout << "Enter distance driven: ";
+    cin >> distance;
+    cout << "Enter max tank capacity: ";
+    cin >> gallons;
+
+    //Process
+    mpg = distance / gallons;
+
+    //Output
+    cout << fixed << setprecision(2);
+    cout << "Performance (mile/gallons) is: " << mpg << endl;
+}
