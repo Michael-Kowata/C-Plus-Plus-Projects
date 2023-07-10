@@ -1,0 +1,133 @@
+// S112 Kowata Stock Market Search.cpp 
+// Author: Michael Kowata
+// Goal: Use a sequential and binary search to find stock market items. 
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+using namespace std;
+
+//Prototypes-----------------------------------------------------------------
+void populateVector(vector<string>& v, string fileName);
+void findValueVector(vector<string> v, string key, int& pos, int& counter);
+void testSequentialSearch(vector <string>vSymbol, vector <string>vCompany);
+void testBinarySearch(vector <string>vSymbol, vector <string> vCompany);
+
+int main()
+{
+    //Data Declaration
+    vector<string> vSymbol;
+    vector<string> vCompany;
+    
+    populateVector(vSymbol, "c:/users/mkowata/temp/StockTickets.txt");
+    populateVector(vCompany, "c:/users/mkowata/temp/StockCompanies.txt");
+
+    int total = 0;
+    for (int i=0; i < vSymbol.size(); i++)
+    {
+        total++;
+    }
+
+    cout << "Total records: " << total << endl << "\n";
+
+    testSequentialSearch(vSymbol, vCompany);
+    testBinarySearch(vSymbol, vCompany);
+
+    cout << "\nAll Done!\n";
+}
+
+
+//---------------------------------------------------------------------------
+//User-defined methods
+void populateVector(vector<string>& v, string fileName)
+{
+    ifstream infile(fileName);
+    if (!infile)
+    {
+        cout << "Error - File not found";
+        exit(1);
+    }
+    string line;
+    while (getline(infile, line))
+    {
+        v.push_back(line);
+    }
+    infile.close();
+}
+
+void findValueVector(vector<string> v, string key, int& pos, int& counter)
+{
+    counter = 0;
+    for (pos = 0; pos < v.size(); pos++)
+    {
+        counter++;
+        if (v[pos] == key)
+        {
+            return;
+        }
+    }
+    pos = -1;
+}
+
+void testSequentialSearch(vector <string>vSymbol, vector <string>vCompany)
+{
+    do
+    {
+        string companySymbol;
+        cout << "SEQ - Enter a ticker symbol [xxx to end]: ";
+        getline(cin, companySymbol);
+        if (companySymbol == "xxx") break;
+        int pos = 0, counter = 0;
+        findValueVector(vSymbol, companySymbol, pos, counter);
+        if (pos >= 0)
+        {
+            cout << "\tSEQ - Company: " << vCompany[pos] << endl;
+        }
+        cout << "\tCost: " << counter << " Operations" << endl << "\n";
+    } while (true);
+}
+
+void myBinarySearch(vector<string> v, string key, int& pos, int& counter)
+{
+    counter = 0;
+    int first = 0;
+    int last = v.size() - 1;
+    while (first <= last)
+    {
+        counter++;
+        pos = (first + last) / 2;
+        if (v[pos] == key)
+        {
+            return;
+        }
+        if (v[pos] > key)
+        {
+            last = pos - 1;  //explore left size
+        }
+        else
+        {
+            first = pos + 1;
+        }
+    }
+    pos = -1;
+}
+
+void testBinarySearch(vector <string>vSymbol, vector <string> vCompany)
+{
+    do
+    {
+        string companySymbol;
+        cout << "\nBIN - Enter a ticker Symbol [xxx to end]: ";
+        getline(cin, companySymbol);
+        if (companySymbol == "xxx") break;
+        int pos = 0, counter = 0;
+        myBinarySearch(vSymbol, companySymbol, pos, counter);
+        if (pos >= 0)
+        {
+            cout << "\tBIN - Company: " << vCompany[pos] << endl;
+
+        }
+        cout << "\tCost: " << counter << " Operations" << endl;
+    } while (true);
+}
