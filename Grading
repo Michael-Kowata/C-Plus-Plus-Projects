@@ -1,0 +1,52 @@
+// S112 Kowata Grading.cpp 
+// Author: Michael Kowata
+// Goal: Detremine letter grade for a graduate/pass-fail student based on the school's grading scheme.
+//--------------------------------------------------------------------------------------------------------
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    //Variable Declaration
+    int grade;
+    char status, letterGrade;
+
+    //Input
+    cout << "Enter status [G, P]: ";
+    cin >> status;
+    cout << "Enter grade [0...100]: ";
+    cin >> grade;
+
+    //Process
+    if (status == 'g' or status == 'P')
+    {
+        //Graduate Student
+        if (grade >= 95)
+        {
+            letterGrade = 'A';
+        }
+        else if (grade >= 85)
+        {
+            letterGrade = 'B';
+        }
+        else
+            letterGrade = 'C';
+    }
+
+    else
+    {
+        //Pass-Fail Student
+        if (grade >= 70)
+        {
+            letterGrade = 'P';
+        }
+        else
+        {
+            letterGrade = 'F';
+        }
+
+    }
+    //Output 
+    cout << "Letter grade is ....... " << letterGrade << endl;
+}
