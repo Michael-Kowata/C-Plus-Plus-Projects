@@ -1,0 +1,35 @@
+// S112 Kowata Female Population Percentage.cpp 
+// Author: Michael Kowata
+// Goal: Calculate the percentage of females in a given population
+
+//Preprocessor Declarations
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+//Main Function
+int main()
+{
+    //Variable Declarations
+    double female;
+    double total;
+    double femPct;
+
+    //Input
+    cout << "Enter the total population: ";
+    cin >> total;
+
+    cout << "Enter the total number of females: ";
+    cin >> female;
+
+
+    //Process
+
+    femPct = (female / total)*100;
+
+
+    //Output
+    cout << fixed << showpoint << setprecision(2);
+    cout << "Female percentage of the population is: " << femPct << "%" << endl;
+
+}
