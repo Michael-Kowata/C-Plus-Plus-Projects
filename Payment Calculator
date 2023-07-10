@@ -1,0 +1,42 @@
+// S112 Kowata Payment Calculator.cpp 
+// Author: Michael Kowata
+// Goal: Calculate montly payments for a loan based on a fixed interest rate.
+//---------------------------------------------------------------------------
+
+//Preprocessor Declarations
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+using namespace std;
+
+//Main Function 
+int main()
+{
+	//Variable Definition
+	double monthlyPayment, loanAmount, annualInterestRate, monthlyInterestRate, totalCost, totalInterestPaid;
+	int terms;
+
+
+	//Input
+	cout << "Enter loan amount: ";
+	cin >> loanAmount;
+	cout << "Enter Annual Interest Rate [0..100]: ";
+	cin >> annualInterestRate;
+	cout << "Enter amount of payments to make: ";
+	cin >> terms;
+
+	//Process
+	monthlyInterestRate = annualInterestRate / 1200;
+	double r = pow(1 + monthlyInterestRate, terms);
+	monthlyPayment = (monthlyInterestRate * r * loanAmount) / (r - 1);
+	totalCost = monthlyPayment * terms;
+	totalInterestPaid = totalCost - loanAmount;
+
+	//Output
+	cout << fixed << setprecision(2) << showpoint;
+	cout << "Monthly payment:     " <<setw(10)<<right<< monthlyPayment << endl;
+	cout << "Total cost:          " <<setw(10)<<right<< totalCost << endl;
+	cout << "Total interest paid: " <<setw(10)<<right<< totalInterestPaid << endl;
+}
+
