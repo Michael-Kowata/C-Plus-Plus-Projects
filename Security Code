@@ -1,0 +1,45 @@
+// S112 Kowata Security Code.cpp 
+// Author: Michael Kowata
+// Purpose: Create a security code for a 6 digit number
+
+//Preprocessor Declarations
+#include <iostream>
+
+using namespace std;
+
+//Main Function 
+int main()
+{
+    //Varible Declaration
+    int secCode, secNum;
+    int NumA, NumB, NumC;
+    int Num1A, Num1B, Num1C;
+    int NumX, NumY, NumZ;
+    
+    
+    //Input
+    cout << "Enter a security code (6 digit number): ";
+    cin >> secCode;
+
+    //Process
+    NumA = secCode / 1000;
+    NumB = secCode % 1000;
+    NumC = NumA + NumB;
+
+    Num1A = NumC / 100;
+    Num1B = ((NumC / 10) % 10);
+    Num1C = NumC % 10;
+
+    NumX = Num1A + Num1B + Num1C;
+
+    NumY = NumX / 10;
+    NumZ = NumX % 10;
+
+    secNum = NumY + NumZ;
+
+
+    //Output
+    cout << "Original Number: " << secCode << endl;
+    cout << "Secured Number:  " << secCode<< secNum;
+
+}
